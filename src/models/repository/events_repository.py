@@ -18,12 +18,12 @@ class EventsRepository:
                 )
                 database.session.add(event)
                 database.session.commit()
-                
+
                 return eventsInfo
-            
+
             except IntegrityError:
                 raise Exception('Evento ja cadastrado')
-            
+
             except Exception as exeption:
                 database.session.rollback()
                 raise exeption
@@ -38,6 +38,6 @@ class EventsRepository:
                     .one()
                 )
                 return event
-            
+
             except NoResultFound:
                 return None
